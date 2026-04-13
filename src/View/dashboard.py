@@ -1,3 +1,3 @@
 import flet as ft 
 
-def Dash
+def DashboardView(page, tarea_controller):
