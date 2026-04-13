@@ -9,3 +9,15 @@ dependencies = [
     "flet>=0.82.2",
     "pydantic[email]>=2.12.5",
 ]
+
+[project.scripts]
+# Aqui definimos el comando corto.
+# Importante: Quitamos el prefijo "src". porque definimos "src" como la raiz.
+app == "main:main"
+
+[tool.uv]
+package = true 
+
+# Esta seccion es crucial para que Python vea el contenido de src como el nivel raiz 
+[tool.setuptools.package-dir]
+"" = "src"
