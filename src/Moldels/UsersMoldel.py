@@ -1,7 +1,7 @@
 import bcrypt
-from .database import Database
+from .BaseMoldel import Database
 
-class UsuarioModel:
+class UserMoldel:
     def __init__(self):
         self.db = Database()
         

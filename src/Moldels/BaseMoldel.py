@@ -8,8 +8,8 @@ class DataBase:
     @staticmethod
     def get_connection():
         return mysql.connector.connect(
-            host=os.getenv("DB_host"),
-            user= os.getenv("BD_USER"),
+            host=os.getenv("DB_HOST"),
+            user= os.getenv("DB_USER"),
             password=os.getenv("DB_PASSWORD"),
-            datanase=os.getenv("DB_NAME")
+            database=os.getenv("DB_NAME")
         )

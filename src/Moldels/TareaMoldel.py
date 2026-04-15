@@ -1,6 +1,6 @@
-from .database import Database
+from .BaseMoldel import Database
 
-class TareaModel:
+class TareaMoldel:
     def __init__(self):
         self.db = Database()
         
@@ -11,7 +11,7 @@ class TareaModel:
         cursor.execute(query, (id_usuario,))
         resultado = cursor.fetchall()
         conn.close()
-        return resultados 
+        return resultado
     
     def  crear(self, id_usuario, titulo, descripcion, prioridad, clasificacion): 
         conn = self.db.get_connection()
