@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-class DataBase:
+class Database:
     @staticmethod
     def get_connection():
         return mysql.connector.connect(

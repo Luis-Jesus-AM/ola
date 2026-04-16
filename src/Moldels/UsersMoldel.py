@@ -1,17 +1,21 @@
 import bcrypt
 from .BaseMoldel import Database
 
-class UserMoldel:
+
+class UsersMoldel:
     def __init__(self):
         self.db = Database()
-        
+
     def registrar(self, usuario_data):
-        # encriptar contraseña 
         salt = bcrypt.gensalt()
-        hashed_pw = bcrypt.hashpw(usuario_data.password.encode('utf-8'),salt)
-        
-        conn =self.db.get_connection()
+        hashed_pw = bcrypt.hashpw(
+            usuario_data.password.encode('utf-8'),
+            salt
+        )
+
+        conn = self.db.get_connection()
         cursor = conn.cursor()
+
         try:
             cursor.execute(
                 "INSERT INTO usuario (nombre, email, password) VALUES (%s, %s, %s)",
@@ -19,20 +23,30 @@ class UserMoldel:
             )
             conn.commit()
             return True
-        except Exception as e: 
+
+        except Exception as e:
             print(f"Error: {e}")
-            return False 
+            return False
+
         finally:
             conn.close()
-            
+
     def validar_login(self, email, password):
-            conn = self.db.get_connection()
-            cursor = conn.cursor(dictionary=True)
-            cursor.execute("SELEC = FROM usuario WHERE email=%s", (email))
-            user = cursor.fetchone()
-            conn.close()
-            
-            if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
-                return user 
-            return None         
-        
+        conn = self.db.get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute(
+            "SELECT * FROM usuario WHERE email = %s",
+            (email,)
+        )
+
+        user = cursor.fetchone()
+        conn.close()
+
+        if user and bcrypt.checkpw(
+            password.encode('utf-8'),
+            user['password'].encode('utf-8')
+        ):
+            return user
+
+        return None
