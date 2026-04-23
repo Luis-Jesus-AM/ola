@@ -19,7 +19,7 @@ class UsersMoldel:
         try:
             cursor.execute(
                 "INSERT INTO usuario (nombre, email, password) VALUES (%s, %s, %s)",
-                (usuario_data.nombre, usuario_data.email, hashed_pw.decode('utf-8'))
+                (usuario_data.nombre, usuario_data.email, hashed_pw.decode('utf-8')), 
             )
             conn.commit()
             return True
