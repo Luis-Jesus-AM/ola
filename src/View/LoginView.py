@@ -42,7 +42,7 @@ def main(page: ft.Page):
     def pagina_inicio():
         return ft.Column(
             [ft.Text("Bienvenido al Sistema", size=28, weight=ft.FontWeight.BOLD),
-             ft.Text("Has iniciado sesión correctamente")],
+            ft.Text("Has iniciado sesión correctamente")],
             alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER
         )
@@ -94,8 +94,8 @@ def main(page: ft.Page):
             contenido.content = pagina_inicio()
             page.add(
                 ft.Column([contenido],
-                          alignment=ft.MainAxisAlignment.CENTER,
-                          horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER)
             )
 
             page.appbar = ft.AppBar(
