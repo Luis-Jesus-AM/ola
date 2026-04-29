@@ -1,5 +1,5 @@
 from Moldels.UsersMoldel import UsersMoldel
-from Moldels.SchemasMoldel import UserSchema
+from Moldels.SchemasMoldel import UsuarioShema
 from pydantic import ValidationError
 
 class AuthController:
@@ -9,7 +9,7 @@ class AuthController:
     def registrar_usuario(self, nombre, email, password):
         try:
             # validar datos con el schem,a 
-            nuevo_usuario = UsuarioSchema(nombre=nombre, emai=email, password=password)
+            nuevo_usuario = UsuarioShema(nombre=nombre, emai=email, password=password)
             success = self.model.registrar(nuevo_usuario)
             return success, "usuario creado correctamente "
         except ValidationError as e: 

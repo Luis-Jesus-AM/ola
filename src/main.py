@@ -6,14 +6,14 @@ from View.DashboardView import DashboardView
 
 def start(page: ft.Page):
     auth_ctrl = AuthController()
-    task_ctrl = TareaController()
+    task_ctrl = TareaController() 
 
     def route_change(e):
         page.views.clear()
 
         if page.route == "/":
             
-            page.views.a0ppend(LoginView(page, auth_ctrl))
+            page.views.append(LoginView(page, auth_ctrl))
             
         elif page.route == "/dashboard":
             page.views.append(DashboardView(page, task_ctrl))
