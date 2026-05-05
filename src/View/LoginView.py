@@ -6,7 +6,7 @@ USUARIOS = {
 }
 
 class LoginView:
-    def __init__(self, page: ft.Page):
+    def __init__(self, page, auth_ctrl):
         self.page = page
 
         # Campos de usuario y contraseña

@@ -8,11 +8,13 @@ def start(page: ft.Page):
     auth_ctrl = AuthController()
     task_ctrl = TareaController() 
 
-    def route_change(e):
+    def route_change(route):
         page.views.clear()
+        page.views.append(LoginView(page, auth_ctrl))
+        page.update()
 
         if page.route == "/":
-            
+            # ✅ LoginView solo recibe page y auth_ctrl (según tu clase)
             page.views.append(LoginView(page, auth_ctrl))
             
         elif page.route == "/dashboard":
@@ -26,8 +28,8 @@ def start(page: ft.Page):
         page.update()
         
     def view_pop(e):
-        if len(page.view)> 1 : 
-            page.views.pop()
+        if len(page.view) > 1: 
+            page.view.pop()
             top_view = page.view[-1]
             page.go(top_view.route)
 
@@ -36,7 +38,8 @@ def start(page: ft.Page):
     
     if page.route == "/":
         route_change(None)
-    else:page.go("/")
+    else:
+        page.go("/")
 
 def main():
     ft.app(target=start)
