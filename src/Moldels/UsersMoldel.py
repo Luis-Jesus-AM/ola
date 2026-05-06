@@ -1,5 +1,5 @@
 import bcrypt
-from .databaseModel import Database
+from .BaseMoldel import Database
 
 class UsuarioModel:
     def __init__(self):
